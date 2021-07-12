@@ -26,17 +26,15 @@ class Player:
 
 	def add_user(self, name):
 		user = Player(name)
-		names.insert(0, user)
+		names.append(user)
 
 e = Entry(root)
 e.grid(row=5, column=5)
 
 
 
-#while True:
-#	add_user()
-while True:
-	names.add_user(e.get)
+for i in range(3):
+	users.add_user(e.get)
 	e.delete(0, END)
 	ask_players = input("Anyone else?")
 	if ask_players == "no":
