@@ -17,24 +17,26 @@ root.geometry("500x500")
 #FRAME??
 
 
-names = []
 
 # CLASS FOR PLAYERS??
-class Player: 
-	def __init__(self, name):
-		self.name = name
-
+class Game: 
+	def __init__(self):
+		self.players = []
 	def add_user(self, name):
-		user = Player(name)
-		names.append(user)
+		self.players.append(name)
+	
+
+game = Game
 
 e = Entry(root)
 e.grid(row=5, column=5)
 
 
 
+
 for i in range(3):
-	users.add_user(e.get)
+	givenname = e.get
+	game.add_user("givenname")
 	e.delete(0, END)
 	ask_players = input("Anyone else?")
 	if ask_players == "no":
