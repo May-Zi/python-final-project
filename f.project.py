@@ -1,5 +1,5 @@
 
-
+### SCRAPPED ATTEMPT
 class Student:
     def __init__(self, name, major, year, id, email):
         self.name = name
