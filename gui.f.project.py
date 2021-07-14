@@ -1,76 +1,15 @@
 from tkinter import *
 import webbrowser
 
-# class Student:
-#     def __init__(self, name, major, year, id, email):
-#         self.name = name
-#         self.major = major
-#         self.year = year
-#         self.id = id
-#         self.email = email
-#         self.assignments = []
-#         self.deleted_assign =[]
-#         self.finished_assign = []
-#         self.exams = []
-#     def __repr__(self):
-#         print(self.name, "\n", self.major, "\n", self.year, "\n", self.id, "\n", self.email)
 
-#     def update_name(self, name):
-#         self.name = name1
-#         print("Done! \n")
-#     def get_name(self):
-#         print(self.name)
-
-#     def update_major(self, major):
-#         self.major = major1
-#         print("Done! \n")
-#     def get_major(self):
-#         print(self.major)
-
-#     def update_year(self, year):
-#         self.year = year1
-#     def get_year(self):
-#         print(self.year)
-
-#     def update_id(self, id):
-#         self.id = id1
-#         print("Done! \n")
-#     def get_id(self):
-#         print(self.id)
-
-#     def update_email(self, email):
-#         self.email = email1
-#         print("Done! \n")
-#     def get_email(self):
-#         print(self.email)
-
-
-
-#     def get_assign():
-#         print(self.assignments)
-#     def add_assign(self, assign):
-#         self.assignments.append(assign + "\n")
-#         print("Done! \n")
-#     def delete_assign(self, assign):
-#         if assign in assignments:
-#             self.deleted_assign.append(assign + "\n")
-#             self.assignments.remove(assign)
-#             print("Done! \n")
-#     def mark_assign_done(self, assign):
-#         if assign in assignments:
-#             self.finished_assign.append(assign + "DONE \n")
-#             self.assignments.remove(assign)
-#             print("Done! \n")
-#     def get_finished_assign():
-#         print(self.finished_assign)
 
 
 root = Tk()
-root.geometry("500x300")
+root.geometry("500x460")
+root.configure(bg="#ffe6b3")
 
 frame0 = Frame(root).pack(side=TOP)
 frame1 = Frame(root).pack(side=BOTTOM)
-frame2 = Frame(root).pack(side=BOTTOM)
 
 
 name_var=StringVar()
@@ -83,22 +22,22 @@ email_var=StringVar()
 assignments_var=[]
 removed_assignments_var=[]
 
-hello = Label(frame0, text="Hello! Enter your information bellow:").pack()
+hello = Label(frame0, text="\n Hello! Enter your information bellow: \n", bg="#ffe6b3", font=("mistral", 23)).pack()
 
-e_name = Entry(frame1, textvariable = name_var, width=20)
-e_name.pack()
+e_name = Entry(frame1, textvariable = name_var, bg="#ffefcc", font=("mistral", 20), justify="center")
+e_name.pack(ipady=5, ipadx= 20)
 e_name.insert(0, "Name")
-e_major = Entry(frame1, textvariable = major_var, width=20)
-e_major.pack()
+e_major = Entry(frame1, textvariable = major_var, bg="#ffefcc", font=("mistral", 20), justify="center")
+e_major.pack(ipady=5, ipadx= 20)
 e_major.insert(0, "Major")
-e_year = Entry(frame1, textvariable = year_var, width=20)
-e_year.pack()
+e_year = Entry(frame1, textvariable = year_var, bg="#ffefcc", font=("mistral", 20), justify="center")
+e_year.pack(ipady=5, ipadx= 20)
 e_year.insert(0, "Year")
-e_id = Entry(frame1, textvariable = id_var, width=20)
-e_id.pack()
+e_id = Entry(frame1, textvariable = id_var, bg="#ffefcc", font=("mistral", 20), justify="center")
+e_id.pack(ipady=5, ipadx= 20)
 e_id.insert(0, "Andrew ID")
-e_email = Entry(frame1, textvariable = email_var, width=20)
-e_email.pack()
+e_email = Entry(frame1, textvariable = email_var, bg="#ffefcc", font=("mistral", 20), justify="center")
+e_email.pack(ipady=5, ipadx= 20)
 e_email.insert(0, "Andrew Email")
 
 
@@ -106,42 +45,47 @@ def proceed():
     global window1
     window1 = Toplevel(root)
     window1.title("Options")
-    window1.geometry("500x200")
-    Label(window1, text="Welcome! What would you like to do?").pack(side=TOP)
-    b_profile = Button(window1, text="My Profile", command=my_profile).pack()
-    b_assignments = Button(window1, text="My Assignments", command=my_assignments).pack()
-    b_links = Button(window1, text="My Links", command=my_links).pack()
+    window1.geometry("500x420")
+    window1.configure(bg="#ffe6b3")
+    Label(window1, text="\n \n Welcome! What would you like to do? \n", bg="#ffe6b3", font=("mistral", 23)).pack(side=TOP)
+    b_profile = Button(window1, text="My Profile", command=my_profile, bg="#ffefcc", font=("mistral", 18), width=20).pack()
+    b_assignments = Button(window1, text="My Assignments", command=my_assignments, bg="#ffefcc", font=("mistral", 18), width=20).pack()
+    b_links = Button(window1, text="My Links", command=my_links, bg="#ffefcc", font=("mistral", 18), width=20).pack()
 
 def my_profile():
     global window2
     window2 = Toplevel(root)
     window2.geometry("500x300")
-    Label(window2, text="Here are your options.").pack()
-    Button(window2, text="View Data", command=lambda:[window2.destroy(), view_data()]).pack()
-    Button(window2, text="change_data", command=lambda:[window2.destroy(), change_data()]).pack()
+    window2.configure(bg="#ffe6b3")
+    Label(window2, text="\nHere are your options.\n", bg="#ffe6b3", font=("mistral", 23)).pack()
+    Button(window2, text="View Data", command=lambda:[window2.destroy(), view_data()], bg="#ffefcc", font=("mistral", 18), width=20).pack()
+    Button(window2, text="change_data", command=lambda:[window2.destroy(), change_data()], bg="#ffefcc", font=("mistral", 18), width=20).pack()
 
 def my_assignments():
     global window5
     window5 = Toplevel(root)
-    window5.geometry("500x300")
-    Label(window5, text="Here are your options.").pack()
-    Button(window5, text="View My Assignments", command=lambda:[window5.destroy(), view_assignments()]).pack()
-    Button(window5, text="Add Assignment", command=lambda:[window5.destroy(), add_assignment()]).pack()
-    Button(window5, text="Remove Assignment", command=lambda:[window5.destroy(), remove_assignment()]).pack()
+    window5.geometry("500x350")
+    window5.configure(bg="#ffe6b3")
+    Label(window5, text="\nHere are your options.\n", bg="#ffe6b3", font=("mistral", 23)).pack()
+    Button(window5, text="View My Assignments", command=lambda:[window5.destroy(), view_assignments()], bg="#ffefcc", font=("mistral", 18), width=20).pack()
+    Button(window5, text="Add Assignment", command=lambda:[window5.destroy(), add_assignment()], bg="#ffefcc", font=("mistral", 18), width=20).pack()
+    Button(window5, text="Remove Assignment", command=lambda:[window5.destroy(), remove_assignment()], bg="#ffefcc", font=("mistral", 18), width=20).pack()
 
 def my_links():
     global window7, link
     window7 = Toplevel(root)
-    window7.geometry("500x300")
+    window7.geometry("500x550")
+    window7.configure(bg="#ffe6b3")
     link=StringVar()
-    Label(window7, text="Here are your options.").pack()
-    Button(window7, text="Canvas", command=canvas).pack()
-    Button(window7, text="Box", command=box).pack()
-    Button(window7, text="Health Connect", command=health_connect).pack()
-    Label(window7, text="\n Or insert custome link here:").pack()
-    e_link = Entry(window7, textvariable = link , width=20)
-    e_link.pack()
-    Button(window7, text = "Go", command=openweb).pack()
+    Label(window7, text="\n Here are your options: \n", bg="#ffe6b3", font=("mistral", 23)).pack()
+    Button(window7, text="Canvas", command=canvas, bg="#ffefcc", font=("mistral", 18), width=15).pack(pady=2)
+    Button(window7, text="Box", command=box, bg="#ffefcc", font=("mistral", 18), width=15).pack(pady=2)
+    Button(window7, text="Health Connect", command=health_connect, bg="#ffefcc", font=("mistral", 18), width=15).pack(pady=2)
+    Button(window7, text="Email", command=gmail, bg="#ffefcc", font=("mistral", 18), width=15).pack(pady=2)
+    Label(window7, text="\n Or insert custome link here:", bg="#ffe6b3", font=("mistral", 23)).pack(pady=2)
+    e_link = Entry(window7, textvariable = link , width=20, bg="#ffefcc", font=("mistral", 20), justify="center")
+    e_link.pack(pady=5)
+    Button(window7, text = "Go", command=openweb, bg="#ffefcc", font=("mistral", 20), width=15).pack(pady=5)
 
 
 
@@ -160,114 +104,76 @@ def health_connect():
     global health_connect_link
     health_connect_link = "https://healthservices.qatar.cmu.edu/confirm.aspx"
     webbrowser.open(health_connect_link)
+def gmail():
+    global gmail_link
+    gmail_link = "https://mail.google.com/"
+    webbrowser.open(gmail_link)
+
 
 def view_data():
     global window3
     window3 = Toplevel(root)
-    window3.geometry("500x300")
-    Label(window3, text=name_var.get()+"\n"+major_var.get()+"\n"+year_var.get()+"\n"+id_var.get()+"\n"+email_var.get()).pack()
+    window3.geometry("450x450")
+    window3.configure(bg="#ffe6b3")
+    Label(window3, text="\n Here is your current data: \n", bg="#ffe6b3", font=("mistral", 24)).pack()
+    Label(window3, text="name: "+name_var.get()+"\n\n major: "+major_var.get()+"\n\n year: "+year_var.get()+"\n\n andrew id: "+id_var.get()+"\n\n andrew email: "+email_var.get(), bg="#ffefcc", font=("mistral", 20)).pack()
 def change_data():
     global window4
     window4 = Toplevel(root)
-    window4.geometry("500x300")
-    e_name = Entry(window4, textvariable = name_var, width=20)
-    e_name.pack()
-    e_major = Entry(frame1, textvariable = major_var, width=20)
-    e_major.pack()
-    e_year = Entry(frame1, textvariable = year_var, width=20)
-    e_year.pack()
-    e_id = Entry(frame1, textvariable = id_var, width=20)
-    e_id.pack()
-    e_email = Entry(frame1, textvariable = email_var, width=20)
-    e_email.pack()
-    Button(window4, text="Done.", command=lambda:[window4.destroy(), view_data()]).pack()
+    window4.geometry("450x320")
+    window4.configure(bg="#ffe6b3")
+    e_name = Entry(window4, textvariable = name_var, width=20, bg="#ffefcc", font=("mistral", 23), justify="center")
+    e_name.pack(pady=5)
+    e_major = Entry(window4, textvariable = major_var, width=20, bg="#ffefcc", font=("mistral", 23), justify="center")
+    e_major.pack(pady=5)
+    e_year = Entry(window4, textvariable = year_var, width=20, bg="#ffefcc", font=("mistral", 23), justify="center")
+    e_year.pack(pady=5)
+    e_id = Entry(window4, textvariable = id_var, width=20, bg="#ffefcc", font=("mistral", 23), justify="center")
+    e_id.pack(pady=5)
+    e_email = Entry(window4, textvariable = email_var, width=20, bg="#ffefcc", font=("mistral", 23), justify="center")
+    e_email.pack(pady=5)
+    Button(window4, text="Done.", command=lambda:[window4.destroy()], bg="#fff7e6", font=("mistral", 18), width=15).pack(pady=5)
 def view_assignments():
     global window6
     window6 = Toplevel(root)
     window6.geometry("500x300")
-    Label(window6, text=assignments_var[0: ]).pack()
+    window6.configure(bg="#ffe6b3")
+    Label(window6, text=assignments_var, bg="#ffe6b3", font=("mistral", 24)).pack()
 def add_assignment():
     global window6, new_assignment
     window6 = Toplevel(root)
     window6.geometry("500x300")
+    window6.configure(bg="#ffe6b3")
+    Label(window6, text="\n Write the title of the \n new assignment below: ", bg="#ffe6b3", font=("mistral", 20)).pack()
     new_assignment = StringVar()
-    e_new_assignment = Entry(window6, textvariable = new_assignment, width=20).pack()
-    Button(window6, text="Add.", command=lambda:[window6.destroy(), add_assignment_confirmed()]).pack()
+    e_new_assignment = Entry(window6, textvariable = new_assignment, width=20, bg="#ffefcc", font=("mistral", 23), justify="center").pack(pady=15)
+    Button(window6, text="Add.", command=lambda:[window6.destroy(), add_assignment_confirmed()], bg="#fff7e6", font=("mistral", 18), width=15).pack(pady=15)
 def add_assignment_confirmed():
-    assignments_var.append(new_assignment.get()+"\n")
+    assignments_var.append(new_assignment.get())
+    assignments_var.append(",")
 def remove_assignment():
     global window6, chosen_assignment
     window6 = Toplevel(root)
     window6.geometry("500x300")
+    window6.configure(bg="#ffe6b3")
+    Label(window6, text="\n Write the title of \n the assignment below: ", bg="#ffe6b3", font=("mistral", 20)).pack()
     chosen_assignment = StringVar()
-    e_chosen_assignment = Entry(window6, textvariable = chosen_assignment, width=20).pack()
-    Button(window6, text="Remove.", command=lambda:[window6.destroy(), remove_assignment_confirmed()]).pack()
+    e_chosen_assignment = Entry(window6, textvariable = chosen_assignment, width=20, bg="#ffefcc", font=("mistral", 23), justify="center").pack(pady=15)
+    Button(window6, text="Remove.", command=lambda:[window6.destroy(), remove_assignment_confirmed()], bg="#fff7e6", font=("mistral", 18), width=15).pack(pady=15)
 def remove_assignment_confirmed():
-    if chosen_assignment in assignments_var:
-        removed_assignments_var.append(chosen_assignment.get()+"\n")
-        assignments_var.delete(chosen_assignment.get)
+    if chosen_assignment.get() in assignments_var:
+        removed_assignments_var.append(chosen_assignment.get())
+        assignments_var.remove(chosen_assignment.get())
+        assignments_var.remove(",")
 
 
 
 str
 
 
-proceed1 = Button(frame2, text="Proceed", command=proceed)
+proceed1 = Button(frame2, text="  Proceed  ", command=proceed, bg="#fff7e6", font=("mistral", 18))
 proceed1.pack()
 
-
-
-
-# student1 = Student(name1, major1, year1, id1, email1)
-
-
-
-# command = input("\n \n Welcome to your profile! What would you like to do? \n \n")
-
-# while True:
-
-#     if command == "help":
-#         print("\n \n Those are your options: \n \n \t My Profile \n\t My Assignments \n\t My Exams \n\t Contacts \n")
-#         command = input("\n What do you need help in? \n")
-#     elif command == "my profile":
-#         print("\n \n Here are your options: \n")
-#         command = input("\t 1.Change Data \n\t 2.View Data \n")
-#         if command == "change data":
-#             print("\n \n What would you like to change?: \n")
-#             command = input("\t 1.Name \n\t 2.Major \n\t 3.Year \n\t 4.Andrew ID \n\t 5.Andrew Email \n \n ")
-#             if command == "name" or 1:
-#                 name1 = input("New name: \n")
-#                 student1.update_name(name1)
-#             elif command == "major" or 2:
-#                 major1 = input("New major: \n")
-#                 student1.update_major(major1)
-#             elif command == "year" or 3:
-#                 year1 = input("Current year: \n")
-#                 student1.update_year(year1)
-#             elif command == "andrew id" or 4:
-#                 id1 = input("New ID: \n")
-#                 student1.update_id(id1)
-#             elif command == "andrew email" or 5:
-#                 email1 = input("New email: \n")
-#                 student1.update_email(email1)
-#         elif command == "view data":
-#             print(student1.__repr__())
-#     elif command == "my assignments":
-#         print("\n \n Here are your options: \n")
-#         command = input("\t 1.View Assignments \n\t 2.Add Assignment \n\t 3.Remove Assignmnet \n\t 4.Mark Done \n\t 5.View Finished Assignments \n \n")
-#         if command == "view assignments" or 1:
-#             student1.get_assign
-#         elif command == "add assignment" or 2:
-#             assign = input("What is the new assignment? \n")
-#             student1.add_assign(assign)
-#         elif command == "remove assignment" or 3:
-#             assign = input("Which assignment? \n")
-#             student1.delete_assign(assign)
-#         elif command == "mark done" or 4:
-#             assign = input("Which assignment? \n")
-#             student1.mark_assign_done(assign)
-#         elif command == "view finished assignments" or 5:
-#             student1.get_finished_assign
 
 
 
