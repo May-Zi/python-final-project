@@ -1,5 +1,5 @@
 from tkinter import *
-
+import webbrowser
 
 # class Student:
 #     def __init__(self, name, major, year, id, email):
@@ -108,8 +108,9 @@ def proceed():
     window1.title("Options")
     window1.geometry("200x200")
     Label(window1, text="Welcome! What would you like to do?").pack(side=TOP)
-    b_profile = Button(window1, text="My Profile", command=my_profile).pack(side=LEFT)
-    b_assignments = Button(window1, text="My Assignments", command=my_assignments).pack(side=BOTTOM)
+    b_profile = Button(window1, text="My Profile", command=my_profile).pack()
+    b_assignments = Button(window1, text="My Assignments", command=my_assignments).pack()
+    b_links = Button(window1, text="My Links", command=my_links).pack()
 
 def my_profile():
     global window2
@@ -124,9 +125,22 @@ def my_assignments():
     Label(window5, text="Here are your options.").pack()
     Button(window5, text="View My Assignments", command=lambda:[window5.destroy(), view_assignments()]).pack()
     Button(window5, text="Add Assignment", command=lambda:[window5.destroy(), add_assignment()]).pack()
+    Button(window5, text="Remove Assignment", command=lambda:[window5.destroy(), remove_assignment()]).pack()
+
+def my_links():
+    global window7
+    window7 = Toplevel(root)
+    Label(window7, text="Here are your options.").pack()
+    link = Entry(window7, width=20)
+    link.pack()
+    Button(window7, text = "This opens Google",command=openweb).pack()
 
 
 
+
+def openweb():
+    webbrowser.open(link.get(),new=new)
+    
 
 def view_data():
     global window3
@@ -135,7 +149,7 @@ def view_data():
 def change_data():
     global window4
     window4 = Toplevel(root)
-    e_name = Entry(window4, width=20)
+    e_name = Entry(window4, textvariable = name_var, width=20)
     e_name.pack()
     e_name.insert(0, name_var.get())
     e_major = Entry(window4, width=20)
@@ -154,7 +168,7 @@ def change_data():
 def view_assignments():
     global window6
     window6 = Toplevel(root)
-    Label(window6, text=assignments_var).pack()
+    Label(window6, text=assignments_var[0]).pack()
 def add_assignment():
     global window6, new_assignment
     window6 = Toplevel(root)
@@ -162,7 +176,18 @@ def add_assignment():
     e_new_assignment = Entry(window6, textvariable = new_assignment, width=20).pack()
     Button(window6, text="Add.", command=lambda:[window6.destroy(), add_assignment_confirmed()]).pack()
 def add_assignment_confirmed():
-    assignments_var.append(new_assignment.get())
+    assignments_var.append(new_assignment.get()+"\n")
+def remove_assignment():
+    global window6, chosen_assignment
+    window6 = Toplevel(root)
+    chosen_assignment = StringVar()
+    e_chosen_assignment = Entry(window6, textvariable = chosen_assignment, width=20).pack()
+    Button(window6, text="Remove.", command=lambda:[window6.destroy(), remove_assignment_confirmed()]).pack()
+def remove_assignment_confirmed():
+    if chosen_assignment in assignments_var:
+        removed_assignments_var.append(chosen_assignment.get()+"\n")
+        assignments_var.delete(chosen_assignment.get)
+
 
 
 str
