@@ -75,9 +75,11 @@ student1 = Student(name1, major1, year1, id1, email1)
 
 
 
-command = input("\n \n Welcome to your profile! What would you like to do? \n \n")
+print("\n\n Welcome to your profile!")
 
 while True:
+    command = input("\n Type what you want to access. Alternatively, type 'help'. \n \n")
+
 
     if command == "help":
         print("\n \n Those are your options: \n \n \t My Profile \n\t My Assignments \n\t My Exams \n\t Contacts \n")
@@ -103,12 +105,14 @@ while True:
             elif command == "andrew email" or 5:
                 email1 = input("New email: \n")
                 student1.update_email(email1)
+            else:
+                break
         elif command == "view data":
             print(student1.__repr__())
     elif command == "my assignments":
         print("\n \n Here are your options: \n")
         command = input("\t 1.View Assignments \n\t 2.Add Assignment \n\t 3.Remove Assignmnet \n\t 4.Mark Done \n\t 5.View Finished Assignments \n \n")
-        if command == "view assignments" or 1:
+        if command == "view assignments":
             student1.get_assign
         elif command == "add assignment" or 2:
             assign = input("What is the new assignment? \n")
