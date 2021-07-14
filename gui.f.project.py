@@ -66,7 +66,7 @@ import webbrowser
 
 
 root = Tk()
-root.geometry("500x500")
+root.geometry("500x300")
 
 frame0 = Frame(root).pack(side=TOP)
 frame1 = Frame(root).pack(side=BOTTOM)
@@ -106,7 +106,7 @@ def proceed():
     global window1
     window1 = Toplevel(root)
     window1.title("Options")
-    window1.geometry("200x200")
+    window1.geometry("500x200")
     Label(window1, text="Welcome! What would you like to do?").pack(side=TOP)
     b_profile = Button(window1, text="My Profile", command=my_profile).pack()
     b_assignments = Button(window1, text="My Assignments", command=my_assignments).pack()
@@ -115,6 +115,7 @@ def proceed():
 def my_profile():
     global window2
     window2 = Toplevel(root)
+    window2.geometry("500x300")
     Label(window2, text="Here are your options.").pack()
     Button(window2, text="View Data", command=lambda:[window2.destroy(), view_data()]).pack()
     Button(window2, text="change_data", command=lambda:[window2.destroy(), change_data()]).pack()
@@ -122,56 +123,73 @@ def my_profile():
 def my_assignments():
     global window5
     window5 = Toplevel(root)
+    window5.geometry("500x300")
     Label(window5, text="Here are your options.").pack()
     Button(window5, text="View My Assignments", command=lambda:[window5.destroy(), view_assignments()]).pack()
     Button(window5, text="Add Assignment", command=lambda:[window5.destroy(), add_assignment()]).pack()
     Button(window5, text="Remove Assignment", command=lambda:[window5.destroy(), remove_assignment()]).pack()
 
 def my_links():
-    global window7
+    global window7, link
     window7 = Toplevel(root)
+    window7.geometry("500x300")
+    link=StringVar()
     Label(window7, text="Here are your options.").pack()
-    link = Entry(window7, width=20)
-    link.pack()
-    Button(window7, text = "This opens Google",command=openweb).pack()
+    Button(window7, text="Canvas", command=canvas).pack()
+    Button(window7, text="Box", command=box).pack()
+    Button(window7, text="Health Connect", command=health_connect).pack()
+    Label(window7, text="\n Or insert custome link here:").pack()
+    e_link = Entry(window7, textvariable = link , width=20)
+    e_link.pack()
+    Button(window7, text = "Go", command=openweb).pack()
 
 
 
 
 def openweb():
-    webbrowser.open(link.get(),new=new)
-    
+    webbrowser.open(link.get())
+def canvas():
+    global canvas_link
+    canvas_link = "https://canvas.cmu.edu/"
+    webbrowser.open(canvas_link)
+def box():
+    global box_link
+    box_link = "https://cmu.account.box.com/login"
+    webbrowser.open(box_link)
+def health_connect():
+    global health_connect_link
+    health_connect_link = "https://healthservices.qatar.cmu.edu/confirm.aspx"
+    webbrowser.open(health_connect_link)
 
 def view_data():
     global window3
     window3 = Toplevel(root)
+    window3.geometry("500x300")
     Label(window3, text=name_var.get()+"\n"+major_var.get()+"\n"+year_var.get()+"\n"+id_var.get()+"\n"+email_var.get()).pack()
 def change_data():
     global window4
     window4 = Toplevel(root)
+    window4.geometry("500x300")
     e_name = Entry(window4, textvariable = name_var, width=20)
     e_name.pack()
-    e_name.insert(0, name_var.get())
-    e_major = Entry(window4, width=20)
+    e_major = Entry(frame1, textvariable = major_var, width=20)
     e_major.pack()
-    e_major.insert(0, major_var.get())
-    e_year = Entry(window4, width=20)
+    e_year = Entry(frame1, textvariable = year_var, width=20)
     e_year.pack()
-    e_year.insert(0, year_var.get())
-    e_id = Entry(window4, width=20)
+    e_id = Entry(frame1, textvariable = id_var, width=20)
     e_id.pack()
-    e_id.insert(0, id_var.get())
-    e_email = Entry(window4, width=20)
+    e_email = Entry(frame1, textvariable = email_var, width=20)
     e_email.pack()
-    e_email.insert(0, email_var.get())
     Button(window4, text="Done.", command=lambda:[window4.destroy(), view_data()]).pack()
 def view_assignments():
     global window6
     window6 = Toplevel(root)
-    Label(window6, text=assignments_var[0]).pack()
+    window6.geometry("500x300")
+    Label(window6, text=assignments_var[0: ]).pack()
 def add_assignment():
     global window6, new_assignment
     window6 = Toplevel(root)
+    window6.geometry("500x300")
     new_assignment = StringVar()
     e_new_assignment = Entry(window6, textvariable = new_assignment, width=20).pack()
     Button(window6, text="Add.", command=lambda:[window6.destroy(), add_assignment_confirmed()]).pack()
@@ -180,6 +198,7 @@ def add_assignment_confirmed():
 def remove_assignment():
     global window6, chosen_assignment
     window6 = Toplevel(root)
+    window6.geometry("500x300")
     chosen_assignment = StringVar()
     e_chosen_assignment = Entry(window6, textvariable = chosen_assignment, width=20).pack()
     Button(window6, text="Remove.", command=lambda:[window6.destroy(), remove_assignment_confirmed()]).pack()
