@@ -10,6 +10,7 @@ root.configure(bg="#ffe6b3")
 
 frame0 = Frame(root).pack(side=TOP)
 frame1 = Frame(root).pack(side=BOTTOM)
+frame2 = Frame(root).pack(side=BOTTOM)
 
 
 name_var=StringVar()
@@ -55,6 +56,7 @@ def proceed():
 def my_profile():
     global window2
     window2 = Toplevel(root)
+    window2.title("My Profile")
     window2.geometry("500x300")
     window2.configure(bg="#ffe6b3")
     Label(window2, text="\nHere are your options.\n", bg="#ffe6b3", font=("mistral", 23)).pack()
@@ -64,6 +66,7 @@ def my_profile():
 def my_assignments():
     global window5
     window5 = Toplevel(root)
+    window5.title("My Assignments")
     window5.geometry("500x350")
     window5.configure(bg="#ffe6b3")
     Label(window5, text="\nHere are your options.\n", bg="#ffe6b3", font=("mistral", 23)).pack()
@@ -74,6 +77,7 @@ def my_assignments():
 def my_links():
     global window7, link
     window7 = Toplevel(root)
+    window7.title("My Links")
     window7.geometry("500x550")
     window7.configure(bg="#ffe6b3")
     link=StringVar()
